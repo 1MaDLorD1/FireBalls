@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using IJunior.TypedScenes;
 
-public class TowerBuilder : MonoBehaviour
+public class TowerBuilder : MonoBehaviour, ISceneLoadHandler<LevelConfiguration>
 {
-    [SerializeField] private float _towerSize;
+    [SerializeField] private int _towerSize;
     [SerializeField] private Transform _buildPoint;
     [SerializeField] private Block _block;
     [SerializeField] private Color[] _colors;
 
     private List<Block> _blocks;
+
+    public int TowerSize => _towerSize;
 
     public List<Block> Build()
     {
@@ -26,6 +29,11 @@ public class TowerBuilder : MonoBehaviour
         }
 
         return _blocks;
+    }
+
+    public void OnSceneLoaded(LevelConfiguration argument)
+    {
+        _towerSize = argument.TowerSize;
     }
 
     private Block BuildBlock(Transform currentBuildPoint)

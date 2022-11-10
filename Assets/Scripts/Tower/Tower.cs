@@ -7,12 +7,11 @@ using UnityEngine.Events;
 public class Tower : MonoBehaviour
 {
     private TowerBuilder _towerBuilder;
-
     private List<Block> _blocks;
 
     public event UnityAction<int> SizeUpdated; 
 
-    private void Start()
+    private void Awake()
     {
         _towerBuilder = GetComponent<TowerBuilder>();
         _blocks = _towerBuilder.Build();
