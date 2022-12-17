@@ -10,6 +10,7 @@ public class LevelProgress : MonoBehaviour
     [SerializeField] private Slider _slider;
     [SerializeField] private Tower _tower;
     [SerializeField] private TowerBuilder _builder;
+    [SerializeField] private LevelPassedMenu _passedMenu;
 
     private float _towerStartSize;
 
@@ -34,6 +35,11 @@ public class LevelProgress : MonoBehaviour
         if (_towerStartSize != 0)
         {
             _slider.DOValue((_towerStartSize - size) / _towerStartSize, _filledDuration);
+        }
+
+        if(size == 0)
+        {
+            _passedMenu.gameObject.SetActive(true);
         }
     }
 }
