@@ -18,6 +18,14 @@ public class LevelCellHolder : MonoBehaviour
     public int CurrentId => _currentId;
     private int _currentId;
 
+    public bool IsClicked => _isClicked;
+    private bool _isClicked;
+
+    private void OnEnable()
+    {
+        _isClicked = false;
+    }
+
     public void Initialization(int id, LevelConfiguration levelConfiguration)
     {
         if (_button == null) _button = GetComponent<Button>();
@@ -31,6 +39,7 @@ public class LevelCellHolder : MonoBehaviour
 
     private void HandleClickButton()
     {
+        _isClicked = true;
         _currentId = _levelIndex - 1;
         Game.Load(_levelConfiguration);
     }
