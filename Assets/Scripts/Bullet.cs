@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Bullet : MonoBehaviour
 {
@@ -9,8 +10,9 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float _bounceRadius;
     [SerializeField] private float _timeOfLive;
 
-
     private Vector3 _moveDirection;
+
+    public UnityAction ObstacleTouching;
 
     private void Start()
     {
@@ -33,6 +35,7 @@ public class Bullet : MonoBehaviour
         if (other.TryGetComponent(out Obstacle obstacle))
         {
             Bounce();
+            ObstacleTouching?.Invoke();
         }
     }
 

@@ -8,18 +8,22 @@ using TMPro;
 [RequireComponent(typeof(Button))]
 public class LevelCellHolder : MonoBehaviour
 {
-    [SerializeField] private LevelConfiguration _config;
     [SerializeField] private Image _statusLevelIcon;
     [SerializeField] private TMP_Text _levelNumberText;
-    [SerializeField] private int _levelIndex;
 
+    private int _levelIndex;
     private Button _button;
+    private LevelConfiguration _levelConfiguration;
 
-    public void Initialization(int id)
+    public int CurrentId => _currentId;
+    private int _currentId;
+
+    public void Initialization(int id, LevelConfiguration levelConfiguration)
     {
         if (_button == null) _button = GetComponent<Button>();
 
-        _levelIndex = id;
+        _levelIndex = id + 1;
+        _levelConfiguration = levelConfiguration;
 
         _levelNumberText.text = _levelIndex.ToString();
         _button.onClick.AddListener(HandleClickButton);
@@ -27,6 +31,7 @@ public class LevelCellHolder : MonoBehaviour
 
     private void HandleClickButton()
     {
-        Game.Load(_config);
+        _currentId = _levelIndex - 1;
+        Game.Load(_levelConfiguration);
     }
 }

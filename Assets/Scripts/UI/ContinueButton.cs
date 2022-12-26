@@ -7,6 +7,8 @@ using IJunior.TypedScenes;
 public class ContinueButton : MonoBehaviour
 {
     [SerializeField] private LevelConfiguration _config;
+    [SerializeField] private LevelCellHolder _levelCellHolder;
+    [SerializeField] private LevelManager _levelManager;
 
     private Button _button;
 
@@ -19,6 +21,6 @@ public class ContinueButton : MonoBehaviour
 
     private void HandleClickButton()
     {
-        Game.Load(_config);
+        Game.Load(_levelManager.LevelConfigurations[_levelCellHolder.CurrentId]);
     }
 }

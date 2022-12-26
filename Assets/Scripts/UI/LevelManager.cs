@@ -6,16 +6,18 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private LevelCellHolder _levelCellHolderPrefab;
     [SerializeField] private Transform _contentLevelCells;
+    [SerializeField] private LevelConfiguration[] _levelConfigurations;
 
-    private const int _levelsCount = 28;
     private List<LevelCellHolder> _levelCellHolders = new List<LevelCellHolder>();
+
+    public LevelConfiguration[] LevelConfigurations => _levelConfigurations;
 
     private void Awake()
     {
-        for (int i = 0; i < _levelsCount; i++)
+        for (int i = 0; i < _levelConfigurations.Length; i++)
         {
             var levelCellHolder = Instantiate(_levelCellHolderPrefab, _contentLevelCells);
-            levelCellHolder.Initialization(i + 1);
+            levelCellHolder.Initialization(i, _levelConfigurations[i]);
             _levelCellHolders.Add(levelCellHolder);
         }
     }

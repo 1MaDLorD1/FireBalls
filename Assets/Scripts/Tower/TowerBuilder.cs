@@ -12,6 +12,12 @@ public class TowerBuilder : MonoBehaviour, ISceneLoadHandler<LevelConfiguration>
 
     private List<Block> _blocks;
 
+    public LevelConfiguration CurrentConfiguration => _currentConfiguration;
+    private LevelConfiguration _currentConfiguration;
+
+    public ObstacleRotator ObstacleRotator => _obstacleRotator;
+    private ObstacleRotator _obstacleRotator;
+
     public int TowerSize => _towerSize;
 
     public List<Block> Build()
@@ -33,7 +39,9 @@ public class TowerBuilder : MonoBehaviour, ISceneLoadHandler<LevelConfiguration>
 
     public void OnSceneLoaded(LevelConfiguration argument)
     {
+        _currentConfiguration = argument;
         _towerSize = argument.TowerSize;
+        _obstacleRotator = argument.ObstacleRotator;
     }
 
     private Block BuildBlock(Transform currentBuildPoint)

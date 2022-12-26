@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class LevelProgress : MonoBehaviour
 {
+    [SerializeField] private Level _level;
     [SerializeField] private float _filledDuration;
     [SerializeField] private Slider _slider;
     [SerializeField] private Tower _tower;
@@ -13,11 +14,17 @@ public class LevelProgress : MonoBehaviour
     [SerializeField] private LevelPassedMenu _passedMenu;
 
     private float _towerStartSize;
+    private float _timeAfterPass;
 
     private void Awake()
     {
         _towerStartSize = _builder.TowerSize;
         _slider.value = 0;
+    }
+
+    private void Update()
+    {
+        _timeAfterPass += Time.deltaTime;
     }
 
     private void OnEnable()
@@ -40,6 +47,7 @@ public class LevelProgress : MonoBehaviour
         if(size == 0)
         {
             _passedMenu.gameObject.SetActive(true);
+            _level.gameObject.SetActive(false);
         }
     }
 }
