@@ -9,7 +9,6 @@ public class AgainButton : MonoBehaviour
 {
     [SerializeField] private LevelLosedMenu _losedMenu;
     [SerializeField] private TowerBuilder _towerBuilder;
-    [SerializeField] private LevelCellHolder _levelCellHolder;
     [SerializeField] private LevelConfiguration _firstLevel;
 
     private LevelConfiguration _currentConfiguration;
@@ -22,7 +21,7 @@ public class AgainButton : MonoBehaviour
 
         _currentConfiguration = _towerBuilder.CurrentConfiguration;
 
-        if(_levelCellHolder.IsClicked)
+        if(DataHolder.IsStartButtonPressed)
             _button.onClick.AddListener(HandleClickButtonFreeGame);
         else
             _button.onClick.AddListener(HandleClickButtonCompanyGame);
@@ -30,11 +29,11 @@ public class AgainButton : MonoBehaviour
 
     private void HandleClickButtonFreeGame()
     {
-        Game.Load(_currentConfiguration);
+        Game.Load(_firstLevel);
     }
 
     private void HandleClickButtonCompanyGame()
     {
-        Game.Load(_firstLevel);
+        Game.Load(_currentConfiguration);
     }
 }

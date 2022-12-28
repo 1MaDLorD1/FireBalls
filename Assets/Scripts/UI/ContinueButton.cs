@@ -7,7 +7,6 @@ using System;
 
 public class ContinueButton : MonoBehaviour
 {
-    [SerializeField] private LevelManager _levelManager;
     [SerializeField] private TowerBuilder _towerBuilder;
 
     private Button _button;
@@ -19,12 +18,12 @@ public class ContinueButton : MonoBehaviour
         if (_button == null) _button = GetComponent<Button>();
 
         _currentLevelConfiguration = _towerBuilder.CurrentConfiguration;
-        var currentConfig = Array.IndexOf(_levelManager.LevelConfigurations, _currentLevelConfiguration);
+        var currentConfig = Array.IndexOf(DataHolder.LevelConfigurations, _currentLevelConfiguration);
 
-        if(currentConfig < _levelManager.LevelConfigurations.Length - 1)
-            _nextLevelConfiguration = _levelManager.LevelConfigurations[currentConfig + 1];
+        if(currentConfig < DataHolder.LevelConfigurations.Length - 1)
+            _nextLevelConfiguration = DataHolder.LevelConfigurations[currentConfig + 1];
         else
-            _nextLevelConfiguration = _levelManager.LevelConfigurations[currentConfig];
+            _nextLevelConfiguration = DataHolder.LevelConfigurations[currentConfig];
 
         _button.onClick.AddListener(HandleClickButton);
     }

@@ -14,6 +14,8 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
+        DataHolder.LevelConfigurations = _levelConfigurations;
+
         for (int i = 0; i < _levelConfigurations.Length; i++)
         {
             var levelCellHolder = Instantiate(_levelCellHolderPrefab, _contentLevelCells);

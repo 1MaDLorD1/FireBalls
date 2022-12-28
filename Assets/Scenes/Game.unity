@@ -1160,7 +1160,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2eda25dce0e4c354ba0dc98cf1b0d5e5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: af99d1bb08047ac4790138c582d218a3, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2354,7 +2354,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ec7822b07a6bd94a9760a70049b7b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelManager: {fileID: 4636132612828753062, guid: 8ce534808be0a694ab1b99fdd92517f7, type: 3}
   _towerBuilder: {fileID: 960273385}
 --- !u!95 &1024719668
 Animator:
@@ -3786,7 +3785,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _losedMenu: {fileID: 604746494}
   _towerBuilder: {fileID: 960273385}
-  _levelCellHolder: {fileID: 4111643238136064696, guid: 784f0c268a5daac42917cbe10d345f49, type: 3}
   _firstLevel: {fileID: 11400000, guid: a9673833b19974d46914bbcaa87b076d, type: 2}
 --- !u!1 &2091414697
 GameObject:

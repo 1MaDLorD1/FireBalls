@@ -17,8 +17,14 @@ public class StartButton : MonoBehaviour
         _button.onClick.AddListener(HandleClickButton);
     }
 
+    private void OnEnable()
+    {
+        DataHolder.IsStartButtonPressed = false;
+    }
+
     private void HandleClickButton()
     {
+        DataHolder.IsStartButtonPressed = true;
         Game.Load(_config);
     }
 }
