@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
     private Vector3 _moveDirection;
 
     public UnityAction ObstacleTouching;
+    public UnityAction BlockDestroy;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class Bullet : MonoBehaviour
     {
         if (other.TryGetComponent(out Block block))
         {
+            BlockDestroy?.Invoke();
             block.Break();
             Destroy(gameObject);
         }

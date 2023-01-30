@@ -2,6 +2,7 @@ using IJunior.TypedScenes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
@@ -12,8 +13,9 @@ public class AgainButton : MonoBehaviour
     [SerializeField] private LevelConfiguration _firstLevel;
 
     private LevelConfiguration _currentConfiguration;
-
     private Button _button;
+
+    public UnityAction ButtonPressed;
 
     private void Start()
     {
@@ -29,6 +31,7 @@ public class AgainButton : MonoBehaviour
 
     private void HandleClickButtonFreeGame()
     {
+        ButtonPressed?.Invoke();
         Game.Load(_firstLevel);
     }
 

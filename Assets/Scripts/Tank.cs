@@ -22,6 +22,7 @@ public class Tank : MonoBehaviour
     private bool _isLosedMenuOpen = false;
 
     public UnityAction<int> HPUpdated;
+    public UnityAction ScoreUpdated;
 
     private void Update()
     {
@@ -48,9 +49,12 @@ public class Tank : MonoBehaviour
 
     private void OnDisable()
     {
-        if(_currentBullet != null)
+        if (_currentBullet != null)
+        {
             _currentBullet.ObstacleTouching -= OnObstacleTouching;
-
+            _currentBullet.BlockDestroy -= OnBlockDestroy;
+        }
+        
         _losedMenu.LosedMenuOpened -= OnLosedMenuOpened;
         _losedMenu.LosedMenuClosed -= OnLosedMenuClosed;
         _continueWithAdButton.RewardGot -= OnRewardGot;
@@ -60,6 +64,7 @@ public class Tank : MonoBehaviour
     {
         _currentBullet = Instantiate(_bulletTemplate, _shootPoint.position, Quaternion.identity);
         _currentBullet.ObstacleTouching += OnObstacleTouching;
+        _currentBullet.BlockDestroy += OnBlockDestroy;
     }
 
     private void OnLosedMenuOpened()
@@ -91,5 +96,10 @@ public class Tank : MonoBehaviour
         {
             _losedMenu.gameObject.SetActive(true);
         }
+    }
+
+    private void OnBlockDestroy()
+    {
+        ScoreUpdated?.Invoke();
     }
 }
