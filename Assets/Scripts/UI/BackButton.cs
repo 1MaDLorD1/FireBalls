@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class BackButton : MonoBehaviour
@@ -9,6 +10,8 @@ public class BackButton : MonoBehaviour
     [SerializeField] private MainMenu _mainMenu;
 
     private Button _button;
+
+    public UnityAction ButtonClicked;
 
     private void Start()
     {
@@ -19,6 +22,7 @@ public class BackButton : MonoBehaviour
 
     private void HandleClickButton()
     {
+        ButtonClicked?.Invoke();
         _mainMenu.gameObject.SetActive(true);
         _levels.gameObject.SetActive(false);
     }

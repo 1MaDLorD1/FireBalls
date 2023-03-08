@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using IJunior.TypedScenes;
 using TMPro;
+using UnityEngine.Events;
 
-[RequireComponent(typeof(Button))]
+[RequireComponent(typeof(Button), typeof(AudioSource))]
 public class LevelCellHolder : MonoBehaviour
 {
     [SerializeField] private Image _statusLevelIcon;
     [SerializeField] private TMP_Text _levelNumberText;
+    [SerializeField] private AudioClip _audioClip;
 
     private int _levelIndex;
     private Button _button;
@@ -17,6 +19,13 @@ public class LevelCellHolder : MonoBehaviour
 
     public int CurrentId => _currentId;
     private int _currentId;
+
+    private AudioSource _audioSource;
+
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
 
     public void Initialization(int id, LevelConfiguration levelConfiguration)
     {
@@ -31,6 +40,7 @@ public class LevelCellHolder : MonoBehaviour
 
     private void HandleClickButton()
     {
+        _audioSource.PlayOneShot(_audioClip);
         _currentId = _levelIndex - 1;
         Game.Load(_levelConfiguration);
     }

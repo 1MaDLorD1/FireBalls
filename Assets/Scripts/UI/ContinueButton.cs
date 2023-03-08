@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using IJunior.TypedScenes;
 using System;
+using UnityEngine.Events;
 
 public class ContinueButton : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class ContinueButton : MonoBehaviour
     private Button _button;
     private LevelConfiguration _currentLevelConfiguration;
     private LevelConfiguration _nextLevelConfiguration;
+
+    public UnityAction ButtonClicked;
 
     private void Start()
     {
@@ -30,6 +33,7 @@ public class ContinueButton : MonoBehaviour
 
     private void HandleClickButton()
     {
+        ButtonClicked?.Invoke();
         Game.Load(_nextLevelConfiguration);
     }
 }
