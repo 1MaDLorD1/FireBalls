@@ -16,8 +16,14 @@ namespace YG
         public string newPlayerName = "Hello!";
         public bool[] openLevels = new bool[3];
 
-        public int CurrentScore;
+        // Ваши сохранения
+
         public int MaxScore;
+        public int CurrentScore;
+
+        // Поля (сохранения) можно удалять и создавать новые. При обновлении игры сохранения ломаться не должны
+        // Пока выявленное ограничение - это расширение массива
+
 
         // Вы можете выполнить какие то действия при загрузке сохранений
         public SavesYG()

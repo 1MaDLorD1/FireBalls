@@ -455,10 +455,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 865a11d3cb4f0b54bad99d790ccc67d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startButton: {fileID: 405006856}
   _levelsButton: {fileID: 349777892}
   _backButton: {fileID: 579473187}
-  _audioClip: {fileID: 8300000, guid: 0f9c456eb3b94d24f90f955a8d4772c5, type: 3}
+  _audioClip: {fileID: 8300000, guid: 00f8c5e9553a89143bd821dab5b97dcb, type: 3}
 --- !u!114 &349777892 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1216337698677161999, guid: 71d480198ce108f438e400cabab68045, type: 3}
@@ -468,17 +467,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 087e14895cc41014998264e129f430eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &405006856 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1216337698607547875, guid: 71d480198ce108f438e400cabab68045, type: 3}
-  m_PrefabInstance: {fileID: 1216337699007934443}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a89d32e2a94689a4b8a151555094ab04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &579473187 stripped
@@ -751,6 +739,46 @@ PrefabInstance:
     - target: {fileID: 1216337698163707210, guid: 71d480198ce108f438e400cabab68045, type: 3}
       propertyPath: m_Name
       value: Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216337698949204900, guid: 71d480198ce108f438e400cabab68045, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216337698986407613, guid: 71d480198ce108f438e400cabab68045, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216337699137848015, guid: 71d480198ce108f438e400cabab68045, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.90422934
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216337699137848015, guid: 71d480198ce108f438e400cabab68045, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.89088887
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216337699137848015, guid: 71d480198ce108f438e400cabab68045, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.098354176
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216337699137848015, guid: 71d480198ce108f438e400cabab68045, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.10937038
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216337699137848015, guid: 71d480198ce108f438e400cabab68045, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 4.165161
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216337699137848015, guid: 71d480198ce108f438e400cabab68045, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1.5499268
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216337699137848015, guid: 71d480198ce108f438e400cabab68045, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216337699137848015, guid: 71d480198ce108f438e400cabab68045, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1216337699479776991, guid: 71d480198ce108f438e400cabab68045, type: 3}
       propertyPath: _gameMenu

@@ -18,11 +18,15 @@ public class Tank : MonoBehaviour
 
     private float _timeAfterShoot;
     private float _timeAfterObstacleTouch;
-    private Bullet _currentBullet;
     private bool _isLosedMenuOpen = false;
+    private Bullet _currentBullet;
+
+    public Bullet CurrentBullet => _currentBullet;
 
     public UnityAction<int> HPUpdated;
     public UnityAction ScoreUpdated;
+    public UnityAction Shooted;
+    public UnityAction Losed;
 
     private void Update()
     {
@@ -63,6 +67,7 @@ public class Tank : MonoBehaviour
     private void Shoot()
     {
         _currentBullet = Instantiate(_bulletTemplate, _shootPoint.position, Quaternion.identity);
+        Shooted?.Invoke();
         _currentBullet.ObstacleTouching += OnObstacleTouching;
         _currentBullet.BlockDestroy += OnBlockDestroy;
     }
@@ -95,6 +100,7 @@ public class Tank : MonoBehaviour
         if(_healthPoints <= 0)
         {
             _losedMenu.gameObject.SetActive(true);
+            Losed?.Invoke();
         }
     }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class LevelProgress : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class LevelProgress : MonoBehaviour
 
     private float _towerStartSize;
     private float _timeAfterPass;
+
+    public UnityAction Passed;
 
     private void Awake()
     {
@@ -46,6 +49,7 @@ public class LevelProgress : MonoBehaviour
 
         if(size == 0)
         {
+            Passed?.Invoke();
             _passedMenu.gameObject.SetActive(true);
             _level.gameObject.SetActive(false);
         }

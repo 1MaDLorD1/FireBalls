@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class MenuButtonClickAudio : MonoBehaviour
 {
-    [SerializeField] private StartButton _startButton;
     [SerializeField] private LevelsButton _levelsButton;
     [SerializeField] private BackButton _backButton;
     [SerializeField] private AudioClip _audioClip;
@@ -15,6 +14,7 @@ public class MenuButtonClickAudio : MonoBehaviour
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
+
         if(!DataHolder.isFirstOpen)
             _audioSource.PlayOneShot(_audioClip);
 
@@ -23,14 +23,12 @@ public class MenuButtonClickAudio : MonoBehaviour
 
     private void OnEnable()
     {
-        _startButton.ButtonClicked += OnButtonClick;
         _levelsButton.ButtonClicked += OnButtonClick;
         _backButton.ButtonClicked += OnButtonClick;
     }
 
     private void OnDisable()
     {
-        _startButton.ButtonClicked -= OnButtonClick;
         _levelsButton.ButtonClicked -= OnButtonClick;
         _backButton.ButtonClicked -= OnButtonClick;
     }

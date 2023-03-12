@@ -13,12 +13,14 @@ public class Scores : MonoBehaviour
     [SerializeField] private TowerBuilder _towerBuilder;
     [SerializeField] private QuitInMenuButton[] _quitInMenuButtons;
     [SerializeField] private AgainButton _againButton;
+    [SerializeField] private Saver _saver;
 
-    private int _score;
-    private int _maxScore;
     private int _currentConfig;
     private LevelConfiguration _currentLevelConfiguration;
     private const string _nameLB = "Leaderboard";
+
+    public int Score { get; set; }
+    public int MaxScore { get; set; }
 
     private void Start()
     {
@@ -26,8 +28,8 @@ public class Scores : MonoBehaviour
         {
             _currentLevelConfiguration = _towerBuilder.CurrentConfiguration;
             _currentConfig = Array.IndexOf(DataHolder.LevelConfigurations, _currentLevelConfiguration);
-            _currentScore.text = $"рейсыхи яв╗р: {_score}";
-            _recordScore.text = $"пейнпд: {_maxScore}";
+            _currentScore.text = $"рейсыхи яв╗р: {Score}";
+            _recordScore.text = $"пейнпд: {MaxScore}";
         }
     }
 
@@ -35,8 +37,9 @@ public class Scores : MonoBehaviour
     {
         if (DataHolder.IsStartButtonPressed)
         {
-            _maxScore = YandexGame.savesData.MaxScore;
-            _score = YandexGame.savesData.CurrentScore;
+
+            MaxScore = YandexGame.savesData.MaxScore;
+            Score = YandexGame.savesData.CurrentScore;
 
             if (DataHolder.IsStartButtonPressed)
                 _tank.ScoreUpdated += OnScoreUpdated;
@@ -63,31 +66,30 @@ public class Scores : MonoBehaviour
 
             _againButton.ButtonPressed -= OnButtonPressed;
 
-            YandexGame.savesData.CurrentScore = _score;
-            YandexGame.savesData.MaxScore = _maxScore;
+            _saver.MySave();
             YandexGame.NewLeaderboardScores(_nameLB, YandexGame.savesData.MaxScore);
         }
     }
 
     private void OnButtonPressed()
     {
-        if (_score > _maxScore)
-            _maxScore = _score;
-        _score = 0;
+        if (Score > MaxScore)
+            MaxScore = Score;
+        Score = 0;
     }
 
     private void OnScoreUpdated()
     {
         var rand = new System.Random();
 
-        if (0 <= _currentConfig && _currentConfig < 4) _score += rand.Next(4, 6);
-        else if (4 <= _currentConfig && _currentConfig < 8) _score += rand.Next(9, 11);
-        else if (8 <= _currentConfig && _currentConfig < 12) _score += rand.Next(14, 16);
-        else if (12 <= _currentConfig && _currentConfig < 16) _score += rand.Next(19, 21);
-        else if (16 <= _currentConfig && _currentConfig < 20) _score += rand.Next(24, 26);
-        else if (20 <= _currentConfig && _currentConfig < 24) _score += rand.Next(29, 31);
-        else if (24 <= _currentConfig) _score += rand.Next(34, 36);
+        if (0 <= _currentConfig && _currentConfig < 4) Score += rand.Next(4, 6);
+        else if (4 <= _currentConfig && _currentConfig < 8) Score += rand.Next(9, 11);
+        else if (8 <= _currentConfig && _currentConfig < 12) Score += rand.Next(14, 16);
+        else if (12 <= _currentConfig && _currentConfig < 16) Score += rand.Next(19, 21);
+        else if (16 <= _currentConfig && _currentConfig < 20) Score += rand.Next(24, 26);
+        else if (20 <= _currentConfig && _currentConfig < 24) Score += rand.Next(29, 31);
+        else if (24 <= _currentConfig) Score += rand.Next(34, 36);
 
-        _currentScore.text = $"рейсыхи яв╗р: {_score}";
+        _currentScore.text = $"рейсыхи яв╗р: {Score}";
     }
 }
